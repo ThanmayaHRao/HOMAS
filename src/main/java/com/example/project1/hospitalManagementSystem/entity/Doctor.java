@@ -31,5 +31,7 @@ public class Doctor {
     @JoinColumn(name = "department_id")
     private Department department;
 
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private Set<Appointment> appointments = new HashSet<>();
 
 }
