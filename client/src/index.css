@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; padding: 0; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-600 { animation-delay: 0.6s; }
+.opacity-0-init { opacity: 0; }
+
+.glass-card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.aurora-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #f5faf4;
+  transition: all 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+.aurora-input::placeholder { color: rgba(179,178,184,0.5); }
+.aurora-input:focus {
+  outline: none;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(245,250,244,0.4);
+  box-shadow: 0 0 0 3px rgba(44,0,219,0.15), 0 0 20px rgba(44,0,219,0.1);
+}
+
+.aurora-btn {
+  background: linear-gradient(135deg, rgba(44,0,219,0.9), rgba(44,0,219,0.6));
+  border: 1px solid rgba(44,0,219,0.8);
+  transition: all 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.08em;
+}
+.aurora-btn:hover {
+  background: linear-gradient(135deg, rgba(44,0,219,1), rgba(80,40,255,0.9));
+  box-shadow: 0 0 30px rgba(44,0,219,0.4);
+  transform: translateY(-1px);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
