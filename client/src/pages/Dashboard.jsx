@@ -44,9 +44,7 @@ export default function Dashboard() {
     fetchData()
   }, [])
   useEffect(()=>{
-    console.log(insuredCount)
-    console.log(insurances)
-    console.log(patients)
+    console.log(doctors)
   },[insuredCount])
   if (loading) {
     return (
@@ -121,42 +119,46 @@ export default function Dashboard() {
           </div>
 
           {/* Departments Section */}
-          <div className="border border-gray-200 rounded shadow-sm">
-            <div className="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
-              <h3 className="text-sm font-semibold uppercase tracking-widest">
-                Departments
-              </h3>
-              <Building2 size={16} className="text-gray-400" />
-            </div>
+          {/* Departments Section */}
+<div className="border border-gray-200 rounded shadow-sm">
+  <div className="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
+    <h3 className="text-sm font-semibold uppercase tracking-widest">
+      Departments
+    </h3>
+    <Building2 size={16} className="text-gray-400" />
+  </div>
 
-            <div className="divide-y divide-gray-100">
-              {departments.map((d) => {
-                const doctorCount = doctors.filter(
-                  (doc) => doc.departmentId === d.id
-                ).length
+  <div className="divide-y divide-gray-100">
+    {departments.map((d) => {
 
-                return (
-                  <div
-                    key={d.id}
-                    className="px-5 py-3 flex justify-between hover:bg-gray-50 transition"
-                  >
-                    <div>
-                      <p className="font-medium text-black">
-                        {d.name}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {d.headDoctorName ?? '—'}
-                      </p>
-                    </div>
+      const deptDoctors = doctors.filter(
+        (doc) =>
+          doc.departmentName?.toLowerCase() ===
+          d.name?.toLowerCase()
+      )
 
-                    <Badge variant="outline">
-                      {doctorCount} docs
-                    </Badge>
-                  </div>
-                )
-              })}
-            </div>
+      return (
+        <div
+          key={d.id}
+          className="px-5 py-3 flex justify-between hover:bg-gray-50 transition"
+        >
+          <div>
+            <p className="font-medium text-black">
+              {d.name}
+            </p>
+            <p className="text-xs text-gray-500">
+              {d.headDoctor ?? '—'}
+            </p>
           </div>
+
+          <Badge variant="outline">
+            {deptDoctors.length} docs
+          </Badge>
+        </div>
+      )
+    })}
+  </div>
+</div>
 
         </div>
 

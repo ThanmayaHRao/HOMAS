@@ -21,7 +21,7 @@ export default function Patients() {
         api.get('/insurance')
       ])
 
-      setPatients(pRes.data.content || [])
+      setPatients(pRes.data.content?.sort((a, b) => a.id - b.id) || [])
       setInsurances(iRes.data || [])
 
     } catch (err) {
@@ -70,7 +70,7 @@ export default function Patients() {
     {
       key: 'id',
       label: '#',
-      render: (r) => (
+      render: (r,index) => (
         <span className="text-gray-400 font-mono text-xs">
           {r.id}
         </span>
